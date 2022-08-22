@@ -1,6 +1,9 @@
 # React JS Notes
 Notes berbasis website yang dibuat menggunakan styled components dan react redux toolkit. Situs web ini berguna untuk menambahkan dan menghapus catatan.
 
+# Demo:
+https://yuneda.github.io/React-JS-Notes-Website
+
 # Tools:
 1. Styled Components
 2. React Redux Toolkit

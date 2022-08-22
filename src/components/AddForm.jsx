@@ -1,4 +1,7 @@
+import React from "react"
 import styled from "styled-components"
+import { add } from "../redux/noteSlice"
+import { useDispatch } from "react-redux/es/exports"
 
 const FormWrapper = styled.div`
 margin: 15px;
@@ -63,26 +66,60 @@ transition: all 0.3s ease-in-out;
 `
 
 const AddForm = () => {
+  const [title, setTitle] = React.useState("");
+  const [date, setDate] = React.useState("");
+  const [desc, setDesc] = React.useState("");
+  const [isArchived, setIsArchived] = React.useState(false);
+  const dispatch = useDispatch()
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const data = {
+      id: Date.now() + Math.random(),
+      title: title,
+      body: desc,
+      createdAt: date,
+      archived: isArchived === "true" ? true : false,
+    }
+    dispatch(add(data));
+  }
   return (
     <FormWrapper>
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <Wrapper>
           <Label htmlFor="title">
             Title
           </Label>
-          <Input id="title" />
+          <Input id="title" onChange={(e) => {
+            e.preventDefault();
+            setTitle(e.target.value);
+          }} />
+        </Wrapper>
+        <Wrapper>
+          <Label htmlFor="date">
+            Dates
+          </Label>
+          <Input id="date" type="datetime-local" onChange={(e) => {
+            e.preventDefault();
+            setDate(e.target.value);
+          }} />
         </Wrapper>
         <Wrapper>
           <Label htmlFor="desc">
             Description
           </Label>
-          <TextArea name="" id="desc" cols="30" rows="5" />
+          <TextArea name="" id="desc" cols="30" rows="5" onChange={(e) => {
+            e.preventDefault();
+            setDesc(e.target.value);
+          }} />
         </Wrapper>
         <Wrapper>
           <Label htmlFor="archive">
             Archive
           </Label>
-          <Select id="archive">
+          <Select id="archive" defaultValue={false} onChange={(e) => {
+            e.preventDefault();
+            setIsArchived(e.target.value);
+          }}>
             <Option value={true}>Yes</Option>
             <Option value={false}>No</Option>
           </Select>

@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import AddForm from "./AddForm"
 import CardContainer from "./CardContainer"
-import { getInitialData } from "../helper"
+import { useSelector } from "react-redux"
 
 const Container = styled.div`
 padding: 10px 20px;
@@ -28,6 +28,7 @@ color: #1c2e65;
 `
 
 const Content = () => {
+  const data = useSelector((state) => state.note);
   return (
     <Container>
       <AddSection>
@@ -36,11 +37,11 @@ const Content = () => {
       </AddSection>
       <NotesSection>
         <Title>Notes</Title>
-        <CardContainer type="notes" data={getInitialData()} archived={false} />
+        <CardContainer type="notes" data={data.data} archived={false} />
       </NotesSection>
       <ArchiveSection>
         <Title>Archives</Title>
-        <CardContainer type="archives" data={getInitialData()} archived={true} />
+        <CardContainer type="archives" data={data.data} archived={true} />
       </ArchiveSection>
     </Container>
   )

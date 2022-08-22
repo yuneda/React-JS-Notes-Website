@@ -19,6 +19,7 @@ justify-content: space-between;
 `
 
 const ContentCard = styled.div`
+padding-right: 10px;
 `
 const ActionButton = styled.div`
 display: flex;
@@ -74,7 +75,7 @@ const CardContainer = (props) => {
       {props.data.map((item) => {
         if (props.archived === item.archived) {
           return (
-            <Card type={props.type}>
+            <Card type={props.type} key={item.id}>
               <ContentCard>
                 <Title>{item.title}</Title>
                 <Time>
@@ -98,7 +99,6 @@ const CardContainer = (props) => {
         }
         return null;
       })}
-
     </Container>
   )
 }

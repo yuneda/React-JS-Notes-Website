@@ -20,6 +20,10 @@ const noteSlice = createSlice({
     deleteNote: (state, action) => {
       state.data = state.data.filter(item => item.id !== action.payload);
     },
+    updateNote: (state, action) => {
+      // const {} = action.payload;
+      
+    },
     setKeyword: (state, action) => {
       state.keyword = action.payload;
       state.filterData = [...state.filterData.filter(item => item.title.includes(action.payload))];

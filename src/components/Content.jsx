@@ -29,8 +29,6 @@ color: #1c2e65;
 
 const Content = () => {
   const data = useSelector((state) => state.note);
-  const dataKeyword = useSelector((state) => state.note).keyword;
-  // const filterData = useSelector((state) => state.note).filterData;
   return (
     <Container>
       <AddSection>

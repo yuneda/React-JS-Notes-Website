@@ -5,6 +5,8 @@ const data = getInitialData();
 
 const initialState = {
   data,
+  keyword: "",
+  filterData: data,
 }
 
 const noteSlice = createSlice({
@@ -17,9 +19,15 @@ const noteSlice = createSlice({
     },
     deleteNote: (state, action) => {
       state.data = state.data.filter(item => item.id !== action.payload);
+    },
+    setKeyword: (state, action) => {
+      state.keyword = action.payload;
+      state.filterData = [...state.filterData.filter(item => item.title.includes(action.payload))];
+      state.filterData = [...state.filterData, ...state.data.filter(item => item.title.includes(action.payload))];
+      console.log(state.filterData);
     }
   }
 });
 
-export const { add, deleteNote } = noteSlice.actions;
+export const { add, deleteNote, setKeyword } = noteSlice.actions;
 export default noteSlice.reducer;

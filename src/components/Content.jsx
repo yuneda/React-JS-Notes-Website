@@ -29,6 +29,8 @@ color: #1c2e65;
 
 const Content = () => {
   const data = useSelector((state) => state.note);
+  const dataKeyword = useSelector((state) => state.note).keyword;
+  // const filterData = useSelector((state) => state.note).filterData;
   return (
     <Container>
       <AddSection>
@@ -43,6 +45,8 @@ const Content = () => {
         <Title>Archives</Title>
         <CardContainer type="archives" data={data.data} archived={true} />
       </ArchiveSection>
+      {/* {dataKeyword}
+      {dataKeyword.length} */}
     </Container>
   )
 }

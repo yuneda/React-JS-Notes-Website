@@ -53,4 +53,8 @@ const showFormattedDate = (date) => {
   return new Date(date).toLocaleDateString("id-ID", options)
 }
 
-export { getInitialData, showFormattedDate };
+const filterData = (data, keyword) => {
+  return data.filter(item => item.title.includes(keyword));
+}
+
+export { getInitialData, showFormattedDate, filterData };

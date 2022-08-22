@@ -1,4 +1,7 @@
+import React from "react"
+import { useDispatch } from "react-redux"
 import styled from "styled-components"
+import { setKeyword } from "../redux/noteSlice"
 
 const Container = styled.div`
 padding: 10px 20px;
@@ -56,12 +59,16 @@ color: #1c2e65;
 `
 
 const Navbar = () => {
+  const dispatch = useDispatch();
   return (
     <Container>
       <Logo>My Notes App</Logo>
       <Search>
         <FormInput>
-          <Input type="text" placeholder="Search ..." />
+          <Input type="text" placeholder="Search ..." onChange={(e) => {
+            e.preventDefault();
+            dispatch(setKeyword(e.target.value));
+          }} />
           <Button type="submit">
             🔎
           </Button>

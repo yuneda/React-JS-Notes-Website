@@ -3,7 +3,7 @@ import ArchiveIcon from '@mui/icons-material/Archive';
 import DeleteIcon from '@mui/icons-material/Delete';
 import StickyNote2Icon from '@mui/icons-material/StickyNote2';
 import { showFormattedDate } from "../helper";
-import { useDispatch } from "react-redux/es/exports"
+import { useDispatch, useSelector } from "react-redux/es/exports"
 import { deleteNote } from "../redux/noteSlice"
 import imgNotes from "../images/not_found_note.png"
 import imgArchive from "../images/not_found_archive.png"
@@ -80,11 +80,42 @@ width: 100%;
 `
 
 const CardContainer = (props) => {
+  const dataKeyword = useSelector((state) => state.note).keyword;
   const dispatch = useDispatch();
   return (
     <Container>
-      {props.data.map((item) => {
+      {dataKeyword.length === 0 && props.data.map((item) => {
         if (props.archived === item.archived) {
+          return (
+            <Card type={props.type} key={item.id}>
+              <ContentCard>
+                <Title>{item.title}</Title>
+                <Time>
+                  <TimeLogo>📆</TimeLogo>
+                  <TimeContent>{showFormattedDate(item.createdAt)}</TimeContent>
+                </Time>
+                <Description>
+                  {item.body}
+                </Description>
+              </ContentCard>
+              <ActionButton>
+                {props.type === "notes" ? (
+                  <Button action="action"><ArchiveIcon /></Button>
+                ) : (
+                  <Button action="action"><StickyNote2Icon /></Button>
+                )}
+                <Button action="delete" onClick={(e) => {
+                  e.preventDefault();
+                  dispatch(deleteNote(item.id));
+                }}><DeleteIcon /></Button>
+              </ActionButton>
+            </Card>
+          )
+        }
+        return null;
+      })}
+      {dataKeyword.length > 0 && props.data.map((item) => {
+        if (item.title.toLowerCase().includes(dataKeyword.toLowerCase()) && props.archived === item.archived) {
           return (
             <Card type={props.type} key={item.id}>
               <ContentCard>

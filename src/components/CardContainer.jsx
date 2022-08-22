@@ -3,6 +3,8 @@ import ArchiveIcon from '@mui/icons-material/Archive';
 import DeleteIcon from '@mui/icons-material/Delete';
 import StickyNote2Icon from '@mui/icons-material/StickyNote2';
 import { showFormattedDate } from "../helper";
+import { useDispatch } from "react-redux/es/exports"
+import { deleteNote } from "../redux/noteSlice"
 const Container = styled.div`
 margin-top: 7px;
 padding: 8px 20px;
@@ -70,6 +72,7 @@ color: #fff;
 `
 
 const CardContainer = (props) => {
+  const dispatch = useDispatch();
   return (
     <Container>
       {props.data.map((item) => {
@@ -92,7 +95,10 @@ const CardContainer = (props) => {
                 ) : (
                   <Button action="action"><StickyNote2Icon /></Button>
                 )}
-                <Button action="delete"><DeleteIcon /></Button>
+                <Button action="delete" onClick={(e) => {
+                  e.preventDefault();
+                  dispatch(deleteNote(item.id));
+                }}><DeleteIcon /></Button>
               </ActionButton>
             </Card>
           )

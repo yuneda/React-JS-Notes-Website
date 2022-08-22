@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/React-JS-Notes-Website/static/css/main.f8daa165.css",
+    "main.js": "/React-JS-Notes-Website/static/js/main.c98bdc8d.js",
+    "static/media/not_found_note.png": "/React-JS-Notes-Website/static/media/not_found_note.cb212499e3aab8dd4d65.png",
+    "static/media/not_found_archive.png": "/React-JS-Notes-Website/static/media/not_found_archive.20f8863e50e21ead5c14.png",
+    "index.html": "/React-JS-Notes-Website/index.html",
+    "main.f8daa165.css.map": "/React-JS-Notes-Website/static/css/main.f8daa165.css.map",
+    "main.c98bdc8d.js.map": "/React-JS-Notes-Website/static/js/main.c98bdc8d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f8daa165.css",
+    "static/js/main.c98bdc8d.js"
+  ]
+}

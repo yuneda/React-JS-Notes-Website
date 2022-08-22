@@ -4,6 +4,7 @@ const FormWrapper = styled.div`
 margin: 15px;
 border: 1px solid #12c4ec;
 padding: 15px;
+padding-bottom: 0;
 border-radius: 15px;
 background: #d0f3fb;
 `
@@ -45,6 +46,20 @@ outline: 1px solid #ccc;
 const Option = styled.option``
 const Button = styled.button`
 width: 100%;
+border: none;
+cursor: pointer;
+color : #fff;
+background: #178efc;
+padding: 10px;
+border-radius: 10px;
+font-size: 1rem;
+font-weight: 600;
+transition: all 0.3s ease-in-out;
+&:hover {
+  background: #fff;
+  color: #178efc;
+  border: 1px solid #178efc;
+}
 `
 
 const AddForm = () => {

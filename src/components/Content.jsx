@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import AddForm from "./AddForm"
 import CardContainer from "./CardContainer"
+import { getInitialData } from "../helper"
 
 const Container = styled.div`
 padding: 10px 20px;
@@ -35,11 +36,11 @@ const Content = () => {
       </AddSection>
       <NotesSection>
         <Title>Notes</Title>
-        <CardContainer type="notes" />
+        <CardContainer type="notes" data={getInitialData()} archived={false} />
       </NotesSection>
       <ArchiveSection>
         <Title>Archives</Title>
-        <CardContainer type="archives" />
+        <CardContainer type="archives" data={getInitialData()} archived={true} />
       </ArchiveSection>
     </Container>
   )

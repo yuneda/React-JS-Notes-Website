@@ -2,6 +2,7 @@ import styled from "styled-components"
 import ArchiveIcon from '@mui/icons-material/Archive';
 import DeleteIcon from '@mui/icons-material/Delete';
 import StickyNote2Icon from '@mui/icons-material/StickyNote2';
+import { showFormattedDate } from "../helper";
 const Container = styled.div`
 margin-top: 7px;
 padding: 8px 20px;
@@ -70,26 +71,34 @@ color: #fff;
 const CardContainer = (props) => {
   return (
     <Container>
-      <Card type={props.type}>
-        <ContentCard>
-          <Title>Ini Judul</Title>
-          <Time>
-            <TimeLogo>📆</TimeLogo>
-            <TimeContent>12:00</TimeContent>
-          </Time>
-          <Description>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque omnis minus, possimus quas quidem commodi!
-          </Description>
-        </ContentCard>
-        <ActionButton>
-          {props.type === "notes" ? (
-            <Button action="action"><ArchiveIcon /></Button>
-          ) : (
-            <Button action="action"><StickyNote2Icon /></Button>
-          )}
-          <Button action="delete"><DeleteIcon /></Button>
-        </ActionButton>
-      </Card>
+      {props.data.map((item) => {
+        if (props.archived === item.archived) {
+          return (
+            <Card type={props.type}>
+              <ContentCard>
+                <Title>{item.title}</Title>
+                <Time>
+                  <TimeLogo>📆</TimeLogo>
+                  <TimeContent>{showFormattedDate(item.createdAt)}</TimeContent>
+                </Time>
+                <Description>
+                  {item.body}
+                </Description>
+              </ContentCard>
+              <ActionButton>
+                {props.type === "notes" ? (
+                  <Button action="action"><ArchiveIcon /></Button>
+                ) : (
+                  <Button action="action"><StickyNote2Icon /></Button>
+                )}
+                <Button action="delete"><DeleteIcon /></Button>
+              </ActionButton>
+            </Card>
+          )
+        }
+        return null;
+      })}
+
     </Container>
   )
 }

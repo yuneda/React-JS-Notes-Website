@@ -5,6 +5,10 @@ import StickyNote2Icon from '@mui/icons-material/StickyNote2';
 import { showFormattedDate } from "../helper";
 import { useDispatch } from "react-redux/es/exports"
 import { deleteNote } from "../redux/noteSlice"
+import imgNotes from "../images/not_found_note.png"
+import imgArchive from "../images/not_found_archive.png"
+import React from "react";
+
 const Container = styled.div`
 margin-top: 7px;
 padding: 8px 20px;
@@ -71,6 +75,10 @@ background: ${props => props.action === "action" ? "#178efc" : "#ff2e60"};
 color: #fff;
 `
 
+const Img = styled.img`
+width: 100%;
+`
+
 const CardContainer = (props) => {
   const dispatch = useDispatch();
   return (
@@ -105,6 +113,9 @@ const CardContainer = (props) => {
         }
         return null;
       })}
+      {props.data.filter((item) => (props.archived === item.archived)).length === 0 && (
+        <Img src={props.type === "notes" ? imgNotes : imgArchive} alt="" />
+      )}
     </Container>
   )
 }

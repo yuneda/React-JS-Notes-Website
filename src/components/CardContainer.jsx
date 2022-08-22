@@ -3,6 +3,7 @@ import ArchiveIcon from '@mui/icons-material/Archive';
 import DeleteIcon from '@mui/icons-material/Delete';
 import StickyNote2Icon from '@mui/icons-material/StickyNote2';
 const Container = styled.div`
+margin-top: 7px;
 padding: 8px 20px;
 `
 

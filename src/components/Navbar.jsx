@@ -7,6 +7,9 @@ justify-content: space-between;
 align-items: center;
 border-bottom: 1px solid #e0e0e0;
 margin-bottom: 20px;
+@media only screen and (max-width: 992px) {
+  flex-direction: column;
+}
 `
 
 const Logo = styled.div`
@@ -47,6 +50,9 @@ const Creator = styled.div`
 font-size: 1rem;
 font-weight: 400;
 color: #1c2e65;
+@media only screen and (max-width: 992px) {
+  display: none;
+}
 `
 
 const Navbar = () => {

@@ -1,9 +1,13 @@
 import styled from "styled-components"
+import AddForm from "./AddForm"
 import CardContainer from "./CardContainer"
 
 const Container = styled.div`
 padding: 10px 20px;
 display: flex;
+@media only screen and (max-width: 992px) {
+  flex-direction: column;
+}
 `
 
 const AddSection = styled.div`
@@ -27,6 +31,7 @@ const Content = () => {
     <Container>
       <AddSection>
         <Title>Add</Title>
+        <AddForm />
       </AddSection>
       <NotesSection>
         <Title>Notes</Title>

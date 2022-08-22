@@ -15,9 +15,11 @@ const Form = styled.form``
 const Wrapper = styled.div`
 display: flex;
 flex-direction: column;
-margin-bottom: 20px;
+margin-bottom: 10px;
 `
-const Label = styled.label``
+const Label = styled.label`
+font-weight: 500;
+`
 const Input = styled.input`
 padding: 10px;
 border: 1px solid #ccc;
@@ -28,6 +30,13 @@ border-radius: 8px;
   outline: 1px solid #12c4ec;
 }
 `
+
+const Count = styled.div`
+color: ${props => props.condition};
+font-size: 1rem;
+font-weight: 700;
+`
+
 const TextArea = styled.textarea`
 padding: 10px;
 border: 1px solid #ccc;
@@ -93,6 +102,9 @@ const AddForm = () => {
             e.preventDefault();
             setTitle(e.target.value);
           }} />
+          <Count condition={50 - title.length <= 5 ? "red" : "#178EFC"}>
+            {50 - title.length} characters remaining
+          </Count>
         </Wrapper>
         <Wrapper>
           <Label htmlFor="date">
@@ -125,7 +137,7 @@ const AddForm = () => {
           </Select>
         </Wrapper>
         <Wrapper>
-          <Button>Submit</Button>
+          <Button type="submit">Submit</Button>
         </Wrapper>
       </Form>
     </FormWrapper>

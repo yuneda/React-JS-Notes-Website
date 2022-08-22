@@ -1,7 +1,6 @@
 import React from "react"
-import { useDispatch } from "react-redux"
 import styled from "styled-components"
-import { setKeyword } from "../redux/noteSlice"
+import SearchForm from "./SearchForm"
 
 const Container = styled.div`
 padding: 10px 20px;
@@ -29,25 +28,6 @@ display: flex;
 align-items: center;
 width: 300px;
 `
-const FormInput = styled.form`
-width: 100%;
-display: flex;
-align-items: center;
-`
-
-const Input = styled.input`
-width: 100%;
-border: 1px solid transparent;
-&:focus {
-  outline: none;
-}
-`
-
-const Button = styled.button`
-border: none;
-background: white;
-cursor: pointer;
-`
 
 const Creator = styled.div`
 font-size: 1rem;
@@ -59,20 +39,11 @@ color: #1c2e65;
 `
 
 const Navbar = () => {
-  const dispatch = useDispatch();
   return (
     <Container>
       <Logo>My Notes App</Logo>
       <Search>
-        <FormInput>
-          <Input type="text" placeholder="Search ..." onChange={(e) => {
-            e.preventDefault();
-            dispatch(setKeyword(e.target.value));
-          }} />
-          <Button type="submit">
-            🔎
-          </Button>
-        </FormInput>
+        <SearchForm />
       </Search>
       <Creator>
         Achmad Yuneda Alfajr

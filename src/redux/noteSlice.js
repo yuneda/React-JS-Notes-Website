@@ -21,8 +21,12 @@ const noteSlice = createSlice({
       state.data = state.data.filter(item => item.id !== action.payload);
     },
     updateNote: (state, action) => {
-      // const {} = action.payload;
-      
+      state.data.map((item) => {
+        if(item.id === action.payload.id){
+          item.archived = !item.archived;
+        }
+        return null;
+      })
     },
     setKeyword: (state, action) => {
       state.keyword = action.payload;
@@ -33,5 +37,5 @@ const noteSlice = createSlice({
   }
 });
 
-export const { add, deleteNote, setKeyword } = noteSlice.actions;
+export const { add, deleteNote, setKeyword, updateNote } = noteSlice.actions;
 export default noteSlice.reducer;

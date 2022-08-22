@@ -4,7 +4,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import StickyNote2Icon from '@mui/icons-material/StickyNote2';
 import { showFormattedDate } from "../helper";
 import { useDispatch } from "react-redux/es/exports"
-import { deleteNote } from "../redux/noteSlice"
+import { deleteNote, updateNote } from "../redux/noteSlice"
 
 const Card = styled.div`
 padding: 15px;
@@ -82,7 +82,14 @@ const CustomCard = ({ item, type }) => {
         </Description>
       </ContentCard>
       <ActionButton>
-        <Button action="action">{type === "notes" ? <ArchiveIcon /> : <StickyNote2Icon />}</Button>
+        <Button action="action" onClick={(e) => {
+          e.preventDefault();
+          const data = {
+            id: item.id,
+            archived: item.archived
+          }
+          dispatch(updateNote(data));
+        }}>{type === "notes" ? <ArchiveIcon /> : <StickyNote2Icon />}</Button>
         <Button action="delete" onClick={(e) => {
           e.preventDefault();
           dispatch(deleteNote(item.id));

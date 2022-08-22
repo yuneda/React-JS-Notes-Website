@@ -6,11 +6,12 @@ display: flex;
 justify-content: space-between;
 align-items: center;
 border-bottom: 1px solid #e0e0e0;
+margin-bottom: 20px;
 `
 
 const Logo = styled.div`
 font-size: 1.75rem;
-font-weight: 600;
+font-weight: 800;
 color: #1c2e65;
 `
 

@@ -43,8 +43,6 @@ const Content = () => {
         <Title>Archives</Title>
         <CardContainer type="archives" data={data.data} archived={true} />
       </ArchiveSection>
-      {/* {dataKeyword}
-      {dataKeyword.length} */}
     </Container>
   )
 }

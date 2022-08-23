@@ -14,6 +14,13 @@ const Img = styled.img`
 width: 100%;
 `
 
+const Text = styled.div`
+font-size: 1.25rem;
+font-weight: 600;
+text-align: center;
+color: #2F2E41;
+`
+
 const CardContainer = (props) => {
   const dataKeyword = useSelector((state) => state.note).keyword;
   return (
@@ -35,7 +42,10 @@ const CardContainer = (props) => {
         return null;
       })}
       {props.data.filter((item) => (props.archived === item.archived)).length === 0 && (
-        <Img src={props.type === "notes" ? imgNotes : imgArchive} alt="" />
+        <>
+          <Img src={props.type === "notes" ? imgNotes : imgArchive} alt="" />
+          <Text>Tidak ada catatan</Text>
+        </>
       )}
     </Container>
   )
